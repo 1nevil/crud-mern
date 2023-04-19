@@ -5,7 +5,6 @@ const emp = require("../Model/empSchema");
 router.get("/read", async (req, res) => {
   try {
     const data = await emp.find({});
-    console.log(data);
     res.status(200).send(data);
   } catch (error) {
     console.log("Error in read " + error);
@@ -23,7 +22,6 @@ router.post("/insert", async (req, res) => {
       dept,
     });
     await empData.save();
-    console.log(empData);
     res.status(200).send(empData);
   } catch (error) {
     console.log("Error in inserted data " + error);
@@ -31,11 +29,10 @@ router.post("/insert", async (req, res) => {
   }
 });
 
-router.post("/delete", async (req, res) => {
-  const { _id } = req.body;
+router.delete("/delete", async (req, res) => {
+  const { id } = req.body;
   try {
-    const response = await emp.deleteOne({ _id });
-    console.log(response);
+    const response = await emp.deleteOne({ id });
     res.status(200).send(response);
   } catch (error) {
     console.log("error in deleting emp" + error);
@@ -44,10 +41,9 @@ router.post("/delete", async (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  const { _id, name, email, password, dept } = req.body;
+  const { id, name, email, password, dept } = req.body;
   try {
-    const data = await emp.findOne({ _id });
-    console.log(data);
+    const data = await emp.findOne({ _id: id });
     data.name = name;
     data.email = email;
     data.password = password;

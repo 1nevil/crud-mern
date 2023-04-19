@@ -19,6 +19,10 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
+process.on("uncaughtException", function (err) {
+  console.log(err);
+});
+
 PORT = process.env.PORT;
 
 //server
