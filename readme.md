@@ -9,9 +9,9 @@ This website is simply perform the crud opration using mern stack.
 
 - material ui
 - react-toastify
-- redux-toolkit
-- createAsyncthunk
-- axios
+- react-toolkit
+- Async thunk
+- Axios
 
 ### In Backend
 
